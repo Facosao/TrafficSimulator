@@ -4,16 +4,18 @@ class Point {
     static radius: number = 0;
 }
 
+const WIDTH: number = 1280;
+const HEIGHT: number = 720;
+
+
 export class Draw {
     private static ctx = this.getContext();
-    private static width: number = this.getWidth();
-    private static height: number = this.getHeight();
 
     private static getContext(): CanvasRenderingContext2D {
         const myCanvas = document.getElementById("display-canvas") as HTMLCanvasElement;
         
-        myCanvas.width = this.getWidth();
-        myCanvas.height = this.getHeight();
+        myCanvas.width = WIDTH;
+        myCanvas.height = HEIGHT;
 
         const result = myCanvas.getContext("2d");
         if (result === null) {
@@ -23,29 +25,14 @@ export class Draw {
         }
     }
 
-    private static getWidth(): number {
-        return window.screen.availWidth - 30;
-    }
-
-    private static getHeight(): number {
-        return window.screen.availHeight - 30;
-    }
-
     static rect(x: number, y: number, width: number, height: number, color: string) {
         this.ctx.fillStyle = color;
         this.ctx.fillRect(x ,y, width, height);
-        console.log("rect drawn");
+        //console.log("rect drawn");
     }
 
     static setBackgroundColor(color: string) {
-        if (Draw.width !== null) {
-            if (Draw.height !== null) {
-                Draw.rect(0, 0, Draw.width, Draw.height, color);
-                return;
-            }
-        }
-
-        throw new Error("width || height === null!");
+        Draw.rect(0, 0, WIDTH, HEIGHT, color);
     }
 
     static circle(p: Point, color: string = "blue") {
