@@ -4,16 +4,14 @@ export function randInt(n: number): number {
     return Math.floor(Math.random() * n);
 }
 
-const TRACK: number = 305;
+//const ASPHALT: string = "#4b4b50";
+//const SOLID: string = "#00A2E8";
 
-Draw.clearScreen();
-Draw.setBackgroundColor("#4b4b50");
-//Draw.rect(0, 0, TRACK, TRACK, "#00A2E8");
 
-const WIDTH: number = 1280;
-const HEIGHT: number = 720;
+//Draw.clearScreen();
+//Draw.setBackgroundColor(ASPHALT);
 
-const CENTER: number = 256 + 128 + 256;
+//const CENTER: number = 256 + 128 + 256;
 // Carro (faixa) = 70px
 // Extra de cada faixa = 10px
 // 3 faixas = (70px * 3) + (10px * 3) = 210px + 30px = 240px
@@ -29,21 +27,40 @@ const CENTER: number = 256 + 128 + 256;
 // 720 - 166 = 554
 // 554 / 2 = 277
 
-// Fileira de cima
-Draw.rect(0, 0, 365, 277, "#00A2E8");
-Draw.rect(365 + 240, 0, 70, 277, "#00A2E8");
-Draw.rect(365 + 240 + 70 + 240, 0, 365, 277, "#00A2E8");
+/*
+const DIVISOR: number = 5;
+const CAR: number = 70;
+const LANE_PADDING: number = 10;
+const LANE: number = CAR + LANE_PADDING;
+const CENTER_WALK: number = CAR;
 
-// Canteiro esquerdo
-//Draw.rect(0, 277 + )
+let horizontalLane = 3 * LANE;
+let verticalLane = 2 * LANE;
 
-// Canteiro direto
+//let centerArea = verticalLane * horizontalLane;
 
+let totalVertical = verticalLane + DIVISOR + verticalLane;
+let totalHorizontal = horizontalLane + CENTER_WALK + horizontalLane;
 
-// Fileira de baixo
-Draw.rect(0, 277 + 166, 365, 277, "#00A2E8");
-Draw.rect(365 + 240, 277 + 166, 70, 277, "#00A2E8");
-Draw.rect(365 + 240 + 70 + 240, 277 + 166, 500, 277, "#00A2E8");
-//Draw.rect(512+256, 240 * 2, 512, 240, "#00A2E8");
+let blockWidth = (Draw.width - totalHorizontal) / 2;
+let blockHeight = (Draw.height - totalVertical) / 2;
 
+let topLeftX = 0;
+let topLeftY = 0;
 
+let topRightX = blockWidth + totalHorizontal;
+let topRightY = 0;
+
+let bottomLeftX = 0;
+let bottomLeftY = blockHeight + totalVertical;
+
+let bottomRightX = topRightX;
+let bottomRightY = bottomLeftY;
+
+Draw.rect(topLeftX, topLeftY, blockWidth, blockHeight, SOLID);
+Draw.rect(topRightX, topRightY, blockWidth, blockHeight, SOLID);
+Draw.rect(bottomLeftX, bottomLeftY, blockWidth, blockHeight, SOLID);
+Draw.rect(bottomRightX, bottomRightY, blockWidth, blockHeight, SOLID);
+*/
+
+Draw.layout();
