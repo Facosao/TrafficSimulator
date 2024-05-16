@@ -5,6 +5,7 @@ const CAR: number = 70;
 const LANE_PADDING: number = 10;
 const LANE: number = CAR + LANE_PADDING;
 const CENTER_WALK: number = CAR;
+const VERTICAL_LANE_HEIGHT = 50;
 
 export class Draw {
     public static width: number = 3840;
@@ -45,6 +46,7 @@ export class Draw {
     }
 
     static rect(x: number, y: number, width: number, height: number, color: string) {
+        console.log("x = " + x);
         this.ctx.fillStyle = color;
         this.ctx.fillRect(x ,y, width, height);
         //console.log("rect drawn");
@@ -66,6 +68,22 @@ export class Draw {
         Draw.rect(this.topRightX, this.topRightY, this.blockWidth, this.blockHeight, Color.GROUND);
         Draw.rect(this.bottomLeftX, this.bottomLeftY, this.blockWidth, this.blockHeight, Color.GROUND);
         Draw.rect(this.bottomRightX, this.bottomRightY, this.blockWidth, this.blockHeight, Color.GROUND);
+    }
+
+    static lanes() {
+        const FIRST_LANE = this.blockWidth + CAR;
+        const SECOND_LANE = FIRST_LANE + LANE;
+        const CENTER_X = this.blockWidth + LANE * 2 + CAR;
+
+        for (let i = 10; i < 11; i += VERTICAL_LANE_HEIGHT * 2) {        
+            Draw.rect(FIRST_LANE, i, LANE_PADDING, VERTICAL_LANE_HEIGHT, Color.LANE);
+            Draw.rect(SECOND_LANE, i, LANE_PADDING, VERTICAL_LANE_HEIGHT, Color.LANE);
+
+            Draw.rect(CENTER_X + CENTER_WALK + CAR, i, LANE_PADDING, VERTICAL_LANE_HEIGHT, Color.LANE);
+            Draw.rect(CENTER_X + CENTER_WALK + CAR + LANE, i, LANE_PADDING, VERTICAL_LANE_HEIGHT, Color.LANE);
+        }
+        
+        Draw.rect(CENTER_X, 0, CENTER_WALK, this.blockHeight, Color.GROUND);
     }
 
     /*

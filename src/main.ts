@@ -64,3 +64,4 @@ Draw.rect(bottomRightX, bottomRightY, blockWidth, blockHeight, SOLID);
 */
 
 Draw.layout();
+Draw.lanes();
